@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 48px;
+    background-color: lightpink;
+}
+
+#calc-body {
+    border: 1px solid black;
+    width: 15em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#calc-screen {
+    background-color: whitesmoke;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+    height: 20%;
+}
+
+#calc-screen input {
+    width: 80%;
+    height: 60%;
+    font-size: 100%;
+}
+
+#calc-buttons {
+    padding: 0.5em;
+    background-color: whitesmoke;
+}
+
+.button-row {
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+#calc-buttons button {
+    margin: 0.1em;
+    font-size: 1.5em;
+    height: 100%;
+    color: black;
+    width: 20%;
+}
