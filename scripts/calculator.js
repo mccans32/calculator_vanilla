@@ -11,31 +11,61 @@ function isNumber(str) {
 }
 
 function findOperands(str, index) {
-  var leftIndex = index - 1;
-  var rightIndex = index + 1;
+  let leftIndex = index - 1;
+  let rightIndex = index + 1;
 
-  console.log(leftIndex);
-  console.log(rightIndex);
+  // Check if we will perform brace or num logic on the left operand
+  let leftChar = str[leftIndex];
+  let leftIsBrace = leftChar == ")";
+  let leftIsNum = isNumber(leftChar);
 
-  while (leftIndex > 0 && !isNaN(str[leftIndex - 1])) {
-    leftIndex--;
+  // Check if Num
+  if (leftIsNum) {
+    while (leftIndex > 0 && isNumber(str[leftIndex - 1])) {
+      leftIndex--;
+    }
+  } else if (leftIsBrace) {
+    // Check if brace
+    while (leftIndex > 0 && str[leftIndex] != "(") {
+      leftIndex--;
+    }
   }
 
-  while (rightIndex < str.length && !isNaN(str[rightIndex + 1])) {
-    rightIndex++;
+  let rightChar = str[rightIndex];
+  let rightIsBrace = rightChar == "(";
+  let rightIsNum = isNumber(rightChar);
+
+  // Check if num
+  if (rightIsNum) {
+    while (rightIndex < str.length && isNumber(str[rightIndex + 1])) {
+      rightIndex++;
+    }
+  } else if (rightIsBrace) {
+    // Check if brace
+    while (rightIndex < str.length && str[rightIndex] != ")") {
+      rightIndex++;
+    }
   }
 
-  var a = parseFloat(str.substring(leftIndex, index));
-  var b = parseFloat(str.substring(index + 1, rightIndex + 1));
+  var a, b;
+  if (leftIsNum) {
+    a = parseFloat(str.slice(leftIndex, index));
+  } else {
+    a = parseCalcString(str.slice(leftIndex + 1, index - 1));
+  }
+
+  if (rightIsNum) {
+    b = parseFloat(str.slice(index + 1, rightIndex + 1));
+  } else {
+    b = parseCalcString(str.slice(index + 2, rightIndex));
+  }
 
   return [a, b, leftIndex, rightIndex];
 }
 
 function parseCalcString(str) {
-  console.log(`String=${str}. Type=${typeof(str)}`);
   //Base Case
   if (isNumber(str)) {
-    console.log(`Number=${str}`)
     return parseFloat(str);
   }
 
@@ -44,11 +74,12 @@ function parseCalcString(str) {
   if (index != -1) {
     //[a, b] = split(str, index);
     [a, b, leftIndex, rightIndex] = findOperands(str, index);
-    console.log([a, b, leftIndex, rightIndex]);
+
     var product = a * b;
-    console.log(`Product=${product}`);
-    var newStr = str.substring(0, leftIndex) + product + str.substring(rightIndex+1);
-    console.log(newStr);
+
+    var newStr =
+      str.slice(0, leftIndex) + product + str.slice(rightIndex + 1);
+
     return parseCalcString(newStr);
   }
 
@@ -57,7 +88,8 @@ function parseCalcString(str) {
   if (index != -1) {
     [a, b, leftIndex, rightIndex] = findOperands(str, index);
     var product = a / b;
-    var newStr = str.substring(0, leftIndex) + product + str.substring(rightIndex+1);
+    var newStr =
+      str.slice(0, leftIndex) + product + str.slice(rightIndex + 1);
     return parseCalcString(newStr);
   }
 
@@ -66,7 +98,8 @@ function parseCalcString(str) {
   if (index != -1) {
     [a, b, leftIndex, rightIndex] = findOperands(str, index);
     var product = a + b;
-    var newStr = str.substring(0, leftIndex) + product + str.substring(rightIndex+1);
+    var newStr =
+      str.slice(0, leftIndex) + product + str.slice(rightIndex + 1);
     return parseCalcString(newStr);
   }
 
@@ -75,18 +108,17 @@ function parseCalcString(str) {
   if (index != -1) {
     [a, b, leftIndex, rightIndex] = findOperands(str, index);
     var product = a - b;
-    var newStr = str.substring(0, leftIndex) + product + str.substring(rightIndex+1);
+    var newStr =
+      str.slice(0, leftIndex) + product + str.slice(rightIndex + 1);
     return parseCalcString(newStr);
   }
 }
 
 function calculateTotal() {
-  console.log(calcString);
   try {
     total = parseCalcString(calcString);
     calcString = total.toString();
   } catch (error) {
-    console.log(error);
     calcString = NaN;
   } finally {
     updateScreen();
