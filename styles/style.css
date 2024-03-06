@@ -15,25 +15,22 @@ html, body {
 }
 
 #calc-screen {
+    height: 2.2em;
     background-color: whitesmoke;
-    padding-top: 0.5em;
+    padding-top: 1em;
     padding-bottom: 0.5em;
-    padding-left: 0.5em;
     display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: left;
-    height: 20%;
+    justify-content: center;
 }
 
-#calc-screen input {
-    width: 80%;
-    height: 60%;
-    font-size: 100%;
+#calc-screen-text {
+    width: 85%;
+    font-size: 1.5em;
 }
 
 #calc-buttons {
     padding: 0.5em;
+    padding-top: 1em;
     background-color: whitesmoke;
 }
 
@@ -45,10 +42,21 @@ html, body {
 
 }
 
-#calc-buttons button {
+button {
     margin: 0.1em;
     font-size: 1.5em;
     height: 100%;
     color: black;
     width: 20%;
+}
+
+.doubleButton {
+    width: 40%;
+}
+
+.rightRow {
+    display: flex;
+    justify-content: right;
+    margin: 0;
+    padding-right: 0.3em;
 }
