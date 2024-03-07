@@ -1,21 +1,29 @@
-const SYMBOLS = ["(", ")", "*", "/", "+", "-", "."]; 
+const VALID_KEYS = ["(", ")", "*", "/", "+", "-", ".", "Enter", "c"];
 
-document.addEventListener(
-    "keydown",
-    (event) => {
-        const keyName = event.key;
-        console.log(keyName);
-        if (!isNaN(keyName) || SYMBOLS.includes(keyName)) {
-            addToCalcString(keyName);
-        }  
-        else if (keyName === "Enter") {
-            calculateTotal();
-        }
-        else if (keyName === "c") {
-            clearScreen();
-        }
-        else if (keyName === "Backspace") {
-            backCalString();
-        } 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function clearButtons() {
+    buttons = document.getElementsByTagName("button");
+    for (let i=0; i<buttons.length; i++) {
+        buttons[i].classList.remove("active");
     }
-)
+}
+
+async function listenForKeys() {
+  document.addEventListener("keydown", async (event) => {
+    const keyName = event.key;
+    button = document.getElementById(keyName.toUpperCase());
+    if (!isNaN(keyName) || VALID_KEYS.includes(keyName)) {
+      button.click();
+      button.classList.add("active");
+      await sleep(30);
+      clearButtons();
+    } else if (keyName === "Backspace") {
+      backCalString();
+    }
+  });
+}
+
+listenForKeys();
