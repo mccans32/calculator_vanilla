@@ -11,19 +11,15 @@ function clearButtons() {
     }
 }
 
-async function listenForKeys() {
-  document.addEventListener("keydown", async (event) => {
+document.addEventListener("keydown", async (event) => {
     const keyName = event.key;
-    button = document.getElementById(keyName.toUpperCase());
+    button = document.getElementById(keyName);
     if (!isNaN(keyName) || VALID_KEYS.includes(keyName)) {
-      button.click();
-      button.classList.add("active");
-      await sleep(30);
-      clearButtons();
+        button.click();
+        button.classList.add("active");
+        await sleep(30);
+        clearButtons();
     } else if (keyName === "Backspace") {
-      backCalString();
+        backCalString();
     }
-  });
-}
-
-listenForKeys();
+});

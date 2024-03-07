@@ -1,3 +1,4 @@
+const MAX_STRING_LENGTH = 15;
 total = 0;
 var calcString = "";
 
@@ -45,7 +46,9 @@ function addToTotal(val) {
 
 function updateScreen() {
   var screen = document.getElementById("calc-screen-text");
-  screen.value = calcString;
+  console.log(calcString.length);
+  console.log(calcString.slice(Math.max(calcString.length - MAX_STRING_LENGTH, 0)));
+  screen.value = calcString.slice(Math.max(calcString.length - MAX_STRING_LENGTH, 0));
 }
 
 function calcButtonVal(buttonIndex, rowIndex) {
