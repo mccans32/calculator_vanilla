@@ -14,5 +14,8 @@ document.addEventListener(
         else if (keyName === "c") {
             clearScreen();
         }
+        else if (keyName === "Backspace") {
+            backCalString();
+        } 
     }
 )
