@@ -23,6 +23,11 @@ function calculateTotal() {
   }
 }
 
+function backCalString() {
+  calcString = calcString.slice(0, calcString.length - 1);
+  updateScreen();
+}
+
 function clearScreen() {
   delete total;
   calcString = "";
@@ -34,7 +39,7 @@ function addToCalcString(value) {
   updateScreen();
 }
 
- function addToTotal(val) {
+function addToTotal(val) {
   total += val;
 }
 
