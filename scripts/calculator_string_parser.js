@@ -33,7 +33,6 @@ function solveForOperator(str, operator, operatorIndex) {
       str.slice(rightOperandStart, rightOperandEnd + 1)
     );
 
-    // DEPENDING WHAT OPERATOR PERFORM DIFFERENT FUNCTION
     let result;
     if (operator === "*") {
       result = leftOperand * rightOperand;
