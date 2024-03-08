@@ -50,9 +50,9 @@ button {
     width: 20%;
 }
 
-button:active {
+/* button:active {
     background-color: red;
-}
+} */
 
 .active {
     background-color: gray;
