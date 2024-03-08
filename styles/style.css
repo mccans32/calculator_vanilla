@@ -50,10 +50,6 @@ button {
     width: 20%;
 }
 
-/* button:active {
-    background-color: red;
-} */
-
 .active {
     background-color: gray;
 }
