@@ -2,65 +2,98 @@ html, body {
     height: 100%;
     margin: 0;
     font-size: 48px;
-    background-color: lightpink;
+    background-image: linear-gradient(to bottom right, steelblue, rgb(176, 189, 201));
 }
 
 #calc-body {
-    border: 1px solid black;
-    width: 15em;
+    border: 1px solid #3d3d3d;
+    width: 12em;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: -0.1em -0.1em 1em 0.1em rgba(43, 91, 131, 0.5);
 }
 
 #calc-screen {
     height: 2.2em;
-    background-color: whitesmoke;
-    padding-top: 1em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
     display: flex;
     justify-content: center;
+    background-color: #525152;
 }
 
 #calc-screen-text {
     width: 85%;
     font-size: 1.5em;
+    background-color: #C3CEBE;
+    font-family: 'LCD2', sans-serif;
+    border-color: gray;
+    box-shadow: -0.2em -0.2em rgba(80, 80, 80, 0.5);
 }
 
 #calc-buttons {
-    padding: 0.5em;
-    padding-top: 1em;
-    background-color: whitesmoke;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-bottom: 0.2em;
+    background-color: #525152;
+
 }
 
 .button-row {
-    background-color: aqua;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-
+    justify-content: space-between;  
+    background-color: #525152;
 }
 
 button {
     margin: 0.1em;
     font-size: 1.5em;
     height: 100%;
+    width: 25%;
+    max-width: 25%;
     color: black;
-    width: 20%;
+    border-radius: 5%;
+    color: white;
+    background-color: darkgrey;
+    text-align: center;
+    border-color: gray;
+    box-shadow: -0.1em -0.1em 0.5em rgba(80, 80, 80, 0.5);
+    text-shadow: -0.5px 0.5px 1px rgba(80, 80, 80, 0.5),
+				  0.5px 0.5px 1px rgba(80, 80, 80, 0.5),
+				  0.5px -0.5px 1px rgba(80, 80, 80, 0.5),
+				 -0.5px -0.5px 5px rgba(80, 80, 80, 0.5);
 }
 
-.active {
+/* For when the button are typed */
+button.active {
+    background-color: gray;
+}
+
+/* For when the button are clicked */
+button:active {
     background-color: gray;
 }
 
 .doubleButton {
-    width: 40%;
+    max-width: 47.5%;
+    width: 100%;
+    background-color: orange;
 }
+
+.doubleButton.active {
+    background-color: darkorange;
+}
+
+.doubleButton:active {
+    background-color: darkorange;
+}
+
 
 .rightRow {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     margin: 0;
-    padding-right: 0.3em;
 }
