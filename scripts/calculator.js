@@ -13,9 +13,7 @@ function isNumber(str) {
 
 function calculateTotal() {
   try {
-    console.log(`Calculating Total for ${calcString}`);
     total = parseStr(calcString);
-    console.log(`Total is ${total}`);
     calcString = total.toString();
   } catch (error) {
     calcString = NaN;
@@ -46,8 +44,6 @@ function addToTotal(val) {
 
 function updateScreen() {
   var screen = document.getElementById("calc-screen-text");
-  console.log(calcString.length);
-  console.log(calcString.slice(Math.max(calcString.length - MAX_STRING_LENGTH, 0)));
   screen.value = calcString.slice(Math.max(calcString.length - MAX_STRING_LENGTH, 0));
 }
 
