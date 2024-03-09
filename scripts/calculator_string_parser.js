@@ -78,7 +78,7 @@ function solveBraces(str, braceIndex) {
 function parseStr(str) {
   console.log(`str = ${str}`);
   // Base Case
-  if (!isNaN(str)) {
+  if (!isNaN(str) || str === "") {
     return parseFloat(str);
   }
 
